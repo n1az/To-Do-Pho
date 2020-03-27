@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}To-Do List App{% endblock %}
+
+{% block content %}
+
+	{% if all_items %}
+	<table class="table table-hover table-dark table-bordered">
+		{% for things in all_items %}
+			{% if things.completed %}
+				<tr class="bg-success">
+					<td>{{ things.item }}</td>
+					<td><center>{{ things.completed }}</center></td>
+					<td><center>Delete</center></td>
+				</tr>
+			{% else %}
+				<tr>
+					<td>{{ things.item }}</td>
+					<td><center>{{ things.completed }}</center></td>
+					<td><center>Delete</center></td>
+				</tr>
+			{% endif %}
+		{% endfor %}
+	</table>
+	{% endif %}
+
+
+{% endblock %}
