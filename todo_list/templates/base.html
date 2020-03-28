@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,6 +9,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}" >
 
     <title>{% block title %}Hello world!{% endblock %}</title>
   </head>
@@ -23,8 +27,9 @@
 	        <a class="nav-link" href="{% url 'about' %}">About</a>
 	      </li>
 	    </ul>
-	    <form class="form-inline my-2 my-lg-0">
-	      <input class="form-control mr-sm-2" type="search" placeholder="To-Do item" aria-label="Search">
+	    <form class="form-inline my-2 my-lg-0" method="POST">
+	      {% csrf_token %}
+	      <input class="form-control mr-sm-2" type="search" placeholder="To-Do item" aria-label="Search" name="item">
 	      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Add to list</button>
 	    </form>
 	  </div>
